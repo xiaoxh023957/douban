@@ -1,0 +1,20 @@
+
+<!-- <import src="../../template/movie-item-template/movie-item-template.wxml"/> -->
+
+    <!-- <view wx:if="{{!loading}}" data="{{data}}"  class="more-wrap">
+        <block wx:for="{{data}}" wx:key="">
+          <template is="movieItemTemplate" data="{{...item}}"/> 
+        </block>
+    </view>
+ -->
+
+<import src="../../template/movie-star-template/movie-star-template.wxml"/>
+    <view wx:if="{{!loading}}" data="data" class="more-wrap">
+        <!-- <block wx:for="{{data}}" wx:key=""> -->
+          <view class = "item-box" data-id="{{data.id}}" bindtap="tap" >
+              <image class="cover-img" src="{{data.coverImg}}" ></image>
+              <text class="title">{{data.title}}</text>
+              <template is="starTemplate" data="{{score:data.score,star:data.star}}" />
+           </view>
+        <!-- </block> -->
+    </view> 

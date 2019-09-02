@@ -1,0 +1,5 @@
+<!--pages/subject/subject.wxml-->
+<view wx:if="{{!loading}}" wx:for="{{typeList}}" wx:key="" class="type-wrap" >
+    <image mode="widthFix" style="width:100%" src="{{item.url}}" bindtap="type" data-tags="{{item.type}}"></image>
+    <text class="type">{{item.type}}</text>
+</view>

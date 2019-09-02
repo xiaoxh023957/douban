@@ -1,0 +1,12 @@
+<!--pages/more/more.wxml-->
+
+<import src="../../template/movie-item-template/movie-item-template.wxml"/>
+
+    <view wx:if="{{!loading}}" data="data"  class="more-wrap">
+        <block wx:for="{{data}}" wx:key="">
+          <template is="movieItemTemplate" data="{{...item}}"/>
+        </block>
+    </view>
+
+
+  

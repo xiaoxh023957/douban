@@ -1,0 +1,35 @@
+<!--pages/detail/detail.wxml-->
+<import src="../../template/movie-star-template/movie-star-template.wxml"/>
+
+<view wx:if="{{!loading}}" class="detail-wrap">
+    
+    <video wx:if="trailer_urls"  controls style='width:100%' src="{{detail.trailer}}"></video>
+      <video wx:elif="blooper_urls"  controls style='width:100%' src="{{detail.blooper}}"></video>
+    <image wx:else  class="dtlImg"  src="{{detail.coverImg}}"></image>
+    <view class="detail-con">
+            <view class="title">{{detail.title}} </view>
+            <template is="starTemplate" data="{{score:detail.score,star:detail.star}}"/>
+            <view class="info">{{detail.pubdate}} {{detail.genres}}</view>
+            <view class="director">导演：{{detail.director}}</view>
+            <view class="casts-title">主演：
+            <block wx:for="{{detail.casts}}" wx:key="">
+              <text  class="casts">{{item.name}} </text>
+            </block>
+            </view>
+            <view class="summary-title">简介：</view>
+            <view class="summary">{{detail.summary}}</view>
+    </view>
+     <view class="detail-ft">
+          <view class="collect" bindtap="tapCollect" >
+              <image wx:if="{{isCollected}}" src="../../assets/image/collect.png"></image>
+              <image wx:else src="../../assets/image/n-collect.png"></image>
+          </view>
+          <view class="share" bindtap="tapShare">
+                <image src="../../assets/image/share.png"></image>
+          </view>
+            </view>
+</view>
+
+
+
+

@@ -1,0 +1,53 @@
+{
+  "pages": [
+   
+    "pages/index/index",
+    "pages/subject/subject",
+    "pages/user/user",
+    "pages/logs/logs",
+    "pages/collection/collection",
+    "template/movie-star-template/movie-star-template",
+    "template/movie-item-template/movie-item-template",
+    "template/movie-list-template/movie-list-template",
+    "pages/detail/detail",
+    "pages/more/more"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f1f1f1",
+    "navigationBarBackgroundColor": "#b21122",
+    "navigationBarTitleText": "豆瓣迷你影院",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#b21122",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/image/index.png",
+        "selectedIconPath": "assets/image/index-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/subject/subject",
+        "iconPath": "assets/image/subject.png",
+        "selectedIconPath": "assets/image/subject-active.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/collection/collection",
+        "iconPath": "assets/image/n-collect.png",
+        "selectedIconPath": "assets/image/collect.png",
+        "text": "收藏"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "assets/image/user.png",
+        "selectedIconPath": "assets/image/user-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

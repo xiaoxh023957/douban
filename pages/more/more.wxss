@@ -1,0 +1,17 @@
+/* pages/more/more.wxss */
+@import "../../template/movie-item-template/movie-item-template.wxss";
+.more-wrap {
+   width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 50rpx;
+  box-sizing: border-box;
+  padding:20rpx 60rpx;
+}
+.loadignImg {
+  text-align: center
+}
+.loadignImg image{
+    width: 80rpx;
+}

@@ -1,0 +1,12 @@
+/* template/star-template/star.wxss */
+
+.star-box image{
+  width:18rpx;
+  height:18rpx;
+  margin-right:2rpx; 
+}
+.star-box  .score{
+  color:#b21122;
+  font:12px/1.5 'simsun';
+  margin-left: 10rpx;
+}

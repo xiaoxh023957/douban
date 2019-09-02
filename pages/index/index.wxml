@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<!-- 项目把相同结构分为一个个模板进行引用，通过Grid布局让元素自适应屏幕宽度，数据部通过豆瓣视频的API接口接收到所需数据，通过数组方法进行解构重组渲染到页面，实现了视频搜索、播放、记录、分享等功能。 -->
+<import src="../../template/movie-list-template/movie-list-template.wxml"/>
+
+<view wx:if="{{!inLoading}}" class="wrap">
+  <template is="movieListTemplate" data="{{movies:inTheatersData,tags:inTheatersTag,urls:inTheatersUrl}}"  />
+</view>
+<view wx:if="{{!soonLoading}}" class="wrap">
+  <template is="movieListTemplate" data="{{movies:comingSoonData,tags:comingSoonTag,urls:comingSoonUrl}}" />
+</view>
+<view wx:if="{{!topLoading}}" class="wrap">
+  <template is="movieListTemplate"  data="{{movies:top250Data,tags:top250Tag,urls:top250Url}}" />
+</view>

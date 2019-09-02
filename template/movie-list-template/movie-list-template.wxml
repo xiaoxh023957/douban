@@ -1,0 +1,17 @@
+<!--template/moive-list-template/moive-list-template.wxml-->
+<import src="../movie-item-template/movie-item-template.wxml"/>
+<template name = "movieListTemplate">
+
+  <view class = "list-box">
+    <view class="head">
+        <text class="tag">{{tags}}</text>
+        <text class="more" bindtap="more" data-urls="{{urls}}" data-tags="{{tags}}">更多></text> 
+    </view> 
+
+   <view class="list-wrap">
+    <block wx:for="{{movies}}" wx:for-item="movie" wx:key="">
+      <template is="movieItemTemplate" data="{{...movie}}"/>
+    </block>
+   </view>
+  </view> 
+</template>

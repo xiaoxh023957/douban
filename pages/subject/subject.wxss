@@ -1,0 +1,19 @@
+/* pages/subject/subject.wxss */
+.type-wrap {
+  width: 100%;
+  padding:5rpx 30rpx;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.type-wrap image{
+    border-radius: 20rpx;
+}
+.type {
+  font:22px/1.5 "楷体";
+  color: #fff;
+  position: absolute;
+  left:60rpx;
+  bottom: 20rpx;
+}

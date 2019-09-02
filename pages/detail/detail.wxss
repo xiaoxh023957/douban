@@ -1,0 +1,50 @@
+/* pages/detail/detail.wxss */
+@import "../../template/movie-star-template/movie-star-template.wxss";
+.detail-con {
+  padding:0 50rpx 80rpx 50rpx;
+}
+.dtlImg{
+  width: 100%;
+  height: 400rpx;
+}
+.title {
+  font:500 24px/1.5 "楷体";
+  color: #000
+}
+.lscore, .info,.director,.casts-title,.casts{
+    line-height: 1.5em;
+    font-size: 26rpx;
+    color: #999;
+}
+.summary-title {
+    font-size: 28rpx;
+    color: #555;
+   }
+.summary {
+  padding: 10rpx;
+  text-indent: 2em;
+   font-size: 26rpx;
+  line-height: 2em;
+   color: #555;
+}
+.detail-ft{
+  position: fixed;
+  bottom:0;
+  width:100%;
+  padding:1px 0;
+  box-sizing: border-box;
+  background: #eee;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 1px;
+}
+.detail-ft>view{
+    background: #fff;
+    padding:20rpx 0 10rpx 0;
+    text-align: center
+}
+.detail-ft image{
+  width:50rpx;
+  height:40rpx;
+}

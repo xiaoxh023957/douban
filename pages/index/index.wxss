@@ -1,0 +1,7 @@
+/**index.wxss**/
+@import "../../template/movie-list-template/movie-list-template.wxss";
+.wrap {
+  padding:0 60rpx; 
+}
+
+

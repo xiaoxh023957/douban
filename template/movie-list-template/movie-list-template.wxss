@@ -1,0 +1,24 @@
+/* template/moive-list-template/moive-list-template.wxss */
+@import "../movie-item-template/movie-item-template.wxss";
+.head {
+  margin:30rpx 0;
+  border-bottom:#b21122 solid 2px;
+}
+.tag{
+  font:bold 16px/1.5 'simsun';
+  color:#b21122;
+}
+.more {
+  float: right;
+  font-size:14px;
+  color:#999;
+  line-height: 24px;
+}
+.list-wrap {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 50rpx;
+  box-sizing: border-box;
+}

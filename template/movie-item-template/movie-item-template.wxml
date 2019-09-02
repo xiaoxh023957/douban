@@ -1,0 +1,12 @@
+<!--template/moive-item-teplate/moive-item.wxml-->
+<import src="../movie-star-template/movie-star-template.wxml"/>
+<template name = "movieItemTemplate">
+
+  <view class = "item-box" data-id="{{id}}" bindtap="tap" >
+    <image class="cover-img" src="{{coverImg}}" ></image>
+    <text class="title">{{title}}</text>
+    <template is="starTemplate" data="{{score:score,star:star}}" />
+  </view>
+
+</template>
+

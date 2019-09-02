@@ -1,0 +1,69 @@
+/* pages/user/user.wxss */
+@import "../../template/movie-item-template/movie-item-template.wxss";
+.user-hd{
+  width:100%;
+  padding: 56rpx 0;
+  border-bottom:#eee 1px solid;
+}
+.user-imgbox {
+  width:210rpx;
+  height:210rpx;
+  border-radius:50%;
+  margin: auto;
+  background: #fff;
+  overflow: hidden;
+}
+.avatar{
+  width:100%;
+  height: 100%;
+
+}
+.btn {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  font-size: 30rpx;
+  line-height: 200rpx;
+  text-align: center;
+  color: #333;
+  border: 1px solid #eee;
+  background-color: #fff;
+}
+.user-hd .name{
+  display: block;
+  width:100%;
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.user-bd {
+  padding:30rpx;
+}
+.user-bd h3{
+  width: 100%;
+  display: block;
+  text-indent: 16px;
+   font: 16px/1.5 '楷体';
+  color:#b21122;
+
+}
+.history{
+  margin-top: 20rpx;
+   text-align: center;
+   font: 16px/1.5 '楷体';
+}
+.more-wrap {
+   width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 50rpx;
+  box-sizing: border-box;
+  padding:20rpx 60rpx;
+}
+.loadignImg {
+  text-align: center
+}
+.loadignImg image{
+    width: 80rpx;
+}
