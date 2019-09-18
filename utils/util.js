@@ -22,7 +22,7 @@ function coverStarToArray(star){
 };
 
 function getMovieListData(url, success) {
-  wx.showLoading({
+  wx.showLoading({ 
     title: '正在加载...',
   })
   wx.request({
@@ -44,9 +44,40 @@ function formatData(data) {
   return newData;
 };
 
+function getListData(url, success) {
+  wx.showLoading({
+    title: '正在加载...',
+  })
+  wx.request({
+    url: url,
+    header: {
+      "Content-Type": "json"
+    },
+    success(res) {
+      success(ftData(res.data));
+      wx.hideLoading();
+
+    }
+  })
+
+};
+
+function ftData(data) {
+  var newData = [];
+    newData = ({
+      title: data.title,
+      coverImg: data.images.large,
+      score: data.rating.average,
+      star: coverStarToArray(data.rating.stars),
+      id: data.id
+    })
+  return newData;
+};
+
 
 module.exports = {
   coverStarToArray: coverStarToArray, 
   getMovieListData: getMovieListData,
+  getListData: getListData,
 
 }

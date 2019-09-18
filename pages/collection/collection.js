@@ -1,71 +1,52 @@
 // pages/collection/collection.js
 
-var {coverStarToArray}=require("../../utils/util.js")
+var { coverStarToArray, getListData}=require("../../utils/util.js")
 Page({
 
 
   data: {
       data:{},
       movies:[],
-      loading:true
+      loading:true,
+      collect:'',
   },
 
 
   onLoad: function (options) {
+
     var This=this;
+
     var collection=  wx.getStorageSync("movieCollection");
+
+    var collectionValue = Object.values(collection);
 
     var collectionKey = Object.keys(collection);
 
-    this.loadDtail(collectionKey.map((item)=>{ return item}))
+    var len = collectionValue.length;
 
+    for (var i = 0; i < len;i++){
+
+      if (collectionValue[i]){ 
+
+        var iKey = collectionKey[i];
+        var requestUrl = `https://douban.uieee.com/v2/movie/subject/${iKey}`;
+
+        getListData(requestUrl, function (data) {
+          This.data.movies.unshift(data);
+          This.setData({
+            data: This.data.movies,
+            loading: false,
+          })
+          wx.hideNavigationBarLoading();
+        });
+      }
+    }
      wx.setNavigationBarTitle({
        title: '收藏夹',
      })
   },
 
-  loadDtail(id) {
-    var This = this;
-    wx.showLoading({
-      title: '正在加载详情....',
-    });
-
-   
-    wx.request({
-      
-      url: `https://douban.uieee.com/v2/movie/subject/${id}`,
-      header: {
-        "Content-Type": "json"
-      },
-      success: function (res) {
-
-        This.setData({
-          
-          data: {
-            title: res.data.title, 
-            coverImg: res.data.images.large, 
-            score: res.data.rating.average, 
-            star: coverStarToArray(res.data.rating.stars), 
-            id: res.data.id
-          },
-          loading: false
-        });
-        wx.hideLoading()
-      },
-
-    })
-
-  },
-
-  onPullDownRefresh: function () {
-
-  },
-
-
-  onReachBottom: function () {
-
-  },
-
+  
   /**
    * 用户点击右上角分享
    */

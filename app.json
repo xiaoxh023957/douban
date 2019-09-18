@@ -1,16 +1,16 @@
 {
   "pages": [
-   
     "pages/index/index",
     "pages/subject/subject",
-    "pages/user/user",
     "pages/logs/logs",
     "pages/collection/collection",
+    "pages/user/user",
     "template/movie-star-template/movie-star-template",
     "template/movie-item-template/movie-item-template",
     "template/movie-list-template/movie-list-template",
     "pages/detail/detail",
-    "pages/more/more"
+    "pages/more/more",
+    "pages/111/222"
   ],
   "window": {
     "backgroundTextStyle": "light",

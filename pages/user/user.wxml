@@ -1,5 +1,5 @@
 <!--pages/user/user.wxml-->
-<!-- <view class="user-box"> -->
+  <import src="../../template/movie-star-template/movie-star-template.wxml"/>
   <view class="user-hd">
        <view wx:if="{{!avatarUrl}}">
        <button class="btn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</button>
@@ -12,23 +12,21 @@
       </view>
   </view>
 
-  <view class="user-bd">
-      
+  <view class="user-bd">  
           <h3>播放记录</h3>
-          <view class="history">
-          <!-- <text>暂无播放记录</text> -->
-          <import src="../../template/movie-star-template/movie-star-template.wxml"/>
-    <view wx:if="{{!loading}}" data="data" class="more-wrap">
-        <!-- <block wx:for="{{data}}" wx:key=""> -->
-          <view class = "item-box" data-id="{{data.id}}" bindtap="tap" >
-              <image class="cover-img" src="{{data.coverImg}}" ></image>
-              <text class="title">{{data.title}}</text>
-              <template is="starTemplate" data="{{score:data.score,star:data.star}}" />
-           </view>
-        <!-- </block> -->
-    </view> 
+          <view class="history">        
+              <view wx:if="{{!loading}}" data="data" >
+                <view wx:if="{{history}}" class="more-wrap">
+                    <block wx:for="{{data}}" wx:key="" data-tem="item">
+                      <view class = "item-box" data-id="{{item.id}}" bindtap="tap" >
+                          <image class="cover-img" src="{{item.coverImg}}" ></image>
+                          <text class="title">{{item.title}}</text>
+                          <template is="starTemplate" data="{{score:item.score,star:item.star}}" />
+                      </view>
+                    </block>
+                </view>
+                <view wx:else>暂无播放记录</view>
+              </view> 
           </view>
-
-        
   </view>
-<!-- </view> -->
+

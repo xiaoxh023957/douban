@@ -9,12 +9,16 @@
  -->
 
 <import src="../../template/movie-star-template/movie-star-template.wxml"/>
-    <view wx:if="{{!loading}}" data="data" class="more-wrap">
-        <!-- <block wx:for="{{data}}" wx:key=""> -->
-          <view class = "item-box" data-id="{{data.id}}" bindtap="tap" >
-              <image class="cover-img" src="{{data.coverImg}}" ></image>
-              <text class="title">{{data.title}}</text>
-              <template is="starTemplate" data="{{score:data.score,star:data.star}}" />
+
+
+    <view wx:if="{{!loading}}" data="data" class="more-wrap" >
+        <block wx:for="{{data}}" wx:key="" data-tem="item">
+          <view class = "item-box" data-id="{{item.id}}" bindtap="tap" >
+              <image class="cover-img" src="{{item.coverImg}}" ></image>
+              <text class="title">{{item.title}}</text>
+              <template is="starTemplate" data="{{score:item.score,star:item.star}}" />
            </view>
-        <!-- </block> -->
+        </block>
+
+     
     </view> 

@@ -1,18 +1,37 @@
 // pages/user/user.js
-var { coverStarToArray } = require("../../utils/util.js")
+var { coverStarToArray, getListData } = require("../../utils/util.js")
 Page({
   data: {
-    avatarUrl:"",
+    avatarUrl:"", 
+    data: {},
+    movies: [],
+    loading:true,
     nickName:"未登录账号！"
   },
 
   onLoad: function (options) {
-    var This =this;
-    var collection = wx.getStorageSync("movieCollection");
+    var This = this;
+    var historyMovie = wx.getStorageSync("historyMovie");
+    var len = historyMovie.length
 
-    var collectionKey = Object.keys(collection);
+    for (var i = 0; i < len; i++) {
 
-    this.loadDtail(collectionKey.map((item) => { return item }))
+      if (historyMovie[i]) {
+        var iKey = historyMovie[i];
+        var requestUrl = `https://douban.uieee.com/v2/movie/subject/${iKey}`;
+
+        getListData(requestUrl, function (data) {
+          This.data.movies.unshift(data);
+          This.setData({
+            data: This.data.movies,
+            loading: false,
+        
+          })
+          wx.hideNavigationBarLoading();
+        });
+      
+      }
+    }
 
       wx.getUserInfo({
         success: function(res) {
@@ -26,38 +45,19 @@ Page({
       title: '个人中心'
     })
   },
-  loadDtail(id) {
-    var This = this;
-    wx.showLoading({
-      title: '正在加载详情....',
-    });
 
 
-    wx.request({
 
-      url: `https://douban.uieee.com/v2/movie/subject/${id}`,
-      header: {
-        "Content-Type": "json"
-      },
-      success: function (res) {
 
-        This.setData({
 
-          data: {
-            title: res.data.title,
-            coverImg: res.data.images.large,
-            score: res.data.rating.average,
-            star: coverStarToArray(res.data.rating.stars),
-            id: res.data.id
-          },
-          loading: false
-        });
-        wx.hideLoading()
-      },
 
-    })
 
-  },
+
+
+
+
+
+  
   bindGetUserInfo() {
     wx.getSetting({
       success(res) {
@@ -77,6 +77,13 @@ Page({
         })
       }
     });
+  },
+
+  tap(e) {
+    var sendId = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/detail/detail?id=${sendId}`,
+    })
   },
    
 

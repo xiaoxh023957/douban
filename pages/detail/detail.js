@@ -4,13 +4,17 @@ Page({
 
   data: {
     loading:true,
+
+    idData:[]
   },
 
   onLoad: function (options) {
     var movieId = options.id;
     this.data.colId = movieId;
+ 
     //获取详细数据
    this.loadDtail(movieId);
+    
 
 
     // 设置收藏状态
@@ -31,6 +35,7 @@ Page({
   loadDtail(id){
     var This = this;
     let historyData=[];
+    
     wx.showLoading({
       title: '正在加载详情....',
     });
@@ -40,21 +45,20 @@ Page({
           "Content-Type": "json"
         },
         success:function(res){  
-
-          var historyMovie=   wx.setStorageSync("historyMovie",res.data )
-
-           var oldHistoryMovie = wx.getStorageSync("historyMovie");
-          let arr = []
-
-          let obj = oldHistoryMovie
-
-          for (let prop in obj) {
-            arr.push({
-              name: prop,
-              ct: obj[prop]
-            })
+          var oldHistoryMovie = wx.getStorageSync("historyMovie");
+          if (oldHistoryMovie){
+            historyData = oldHistoryMovie;
+            if (historyData.indexOf(res.data.id)==-1){
+              historyData.unshift(res.data.id);
+            }
+            var historyMovie = wx.setStorageSync("historyMovie", historyData);
+          }else{
+            historyData.unshift(res.data.id);
+            var historyMovie = wx.setStorageSync("historyMovie", historyData);
           }
-         var oldHistoryMovieArr= JSON.stringify(arr)  
+          
+          console.log(historyData)
+        
          
             This.setData({
               detail:{
